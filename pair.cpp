@@ -72,4 +72,40 @@ cout<<"Pair Not Found";
 return 0;
 }
 
+// Using unordered Map
+
+#include<iostream>
+#include<unordered_map>
+using namespace std;
+
+void find_pair(int arr[],int sum,int n)
+{
+        unordered_map<int,int>map; //to create an empty map
+        for(int j=0;j<n;j++)
+        {
+                if(map.find(sum-arr[j])!=map.end())
+                {
+                        cout<<"\nPair Found ("<<arr[map[sum-arr[j]]]<<", "<<arr[j]<<") ";
+                        return;
+                }
+                map[arr[j]]=j;
+        }
+cout<<"\nPair Not Found";
+
+}
+
+int main()
+{
+int i,n,sum;
+cout<<"Enter size of array: ";
+cin>>n;
+int arr[n];
+cout<<"\nEnter the sum: ";
+cin>>sum;
+cout<<"\nEnter array: ";
+for(i=0;i<n;i++)
+        cin>>arr[i];
+find_pair(arr,sum,n);
+return 0;
+}
 
